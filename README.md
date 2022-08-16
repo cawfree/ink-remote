@@ -8,7 +8,7 @@ Serve an [__Ink__](https://github.com/vadimdemedes/ink) application via [__Expre
 Install using [__Yarn__](https://yarnpkg.com/):
 
 ```shell
-yarn add ink-remote
+yarn add ink-remote xterm
 ```
 
 Then just swap out `ink`'s included `render` function for the alternative `render` method exported by `ink-remote`:
@@ -24,7 +24,7 @@ import * as React from "react";
 + render(<Text children="Hello, world!" />, {port: 3000});
 ```
 
-In this instance, not only will your application will be rendered in the CLI like usual, but it will also be accessible via [`http://localhost:3000`](http://localhost:3000`).
+In this instance, not only will your application will be rendered in the CLI like usual, but it will also be accessible via [`http://localhost:3000`](http://localhost:3000`). The content is rendered using [__XTerm__](https://github.com/xtermjs/xterm.js/), whose fully-featured renderer is capable of rendering your application faithfully.
 
 ### ✌️ license
 [__MIT__](./LICENSE)
