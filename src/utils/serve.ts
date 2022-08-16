@@ -1,22 +1,26 @@
 import express from "express";
 import expressWs from "express-ws";
+import * as handlebars from "handlebars";
+import fs from "fs";
 import ip from "ip";
-import {html} from "../pages";
 
 export const serve = ({port}: {
   readonly port: number;
 }) => {
   const {app} = expressWs(
     express()
-      .get('/', (...args) => {
-        const [, res] = args;
-        return res
+      .get(
+        '/',
+        (e, res) => res
           .status(200)
-          .send(html({
-            address: ip.address(),
-            port,
-          }));
-      }),
+          .send(
+            handlebars.compile(fs.readFileSync('public/index.html', 'utf-8'))({
+              address: ip.address(),
+              port,
+            }),
+          ),
+      )
+      .use(express.static('public'))
   );
 
   app.ws('/', (ws, req) => {
