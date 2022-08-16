@@ -4,10 +4,23 @@ import Spinner from "ink-spinner";
 
 import {render} from "../src";
 
-render(
-  <Box flexDirection="row">
-    <Spinner />
-    <Text children="Hello, world!" color="red" />
-  </Box>,
-  {port: 3000},
-);
+function App() {
+  const [count, increment] = React.useReducer((i) => i + 1, 0);
+
+  React.useEffect(() => {
+    const i = setInterval(increment, 1000);
+    return () => clearInterval(i);
+  }, [increment]);
+
+  return (
+    <Box flexDirection="row">
+      <Spinner />
+      <Text children=" " />
+      <Text children="Hello, world!" color="red" />
+      <Text children=" " />
+      <Text children={String(count)} color="green" />
+    </Box>
+  );
+}
+
+render(<App />, {port: 3000});

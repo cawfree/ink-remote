@@ -26,12 +26,14 @@ export function render<
 ): Instance {
 
   const port = options?.port || DEFAULT_PORT;
-
-  serve({port});
+  const wss = serve({port});
 
   const defaultWrite = process.stdout.write.bind(process.stdout);
 
   process.stdout.write = (e) => {
+    wss.clients.forEach(client => {
+      client.send(e);
+    })
     return defaultWrite(e);
   };
 

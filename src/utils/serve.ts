@@ -8,7 +8,7 @@ import path from "path";
 export const serve = ({port}: {
   readonly port: number;
 }) => {
-  const {app} = expressWs(
+  const {app, getWss} = expressWs(
     express()
       .use(express.static(__dirname + '/public'))
       .get('/index.css', (req, res) =>
@@ -28,11 +28,13 @@ export const serve = ({port}: {
       )
   );
 
-  app.ws('/', (ws, req) => {
-    ws.on('message', (msg) => {
-      console.log('got a messsage', msg);
-    });
-  });
+  // Receive messages from the client.
+  app.ws(
+    '/',
+    (ws, req) => ws.on('message', (msg) => undefined),
+  );
 
-  return app.listen(port);
+  app.listen(port);
+
+  return getWss();
 };
