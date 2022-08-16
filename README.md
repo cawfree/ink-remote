@@ -24,7 +24,7 @@ import * as React from "react";
 + render(<Text children="Hello, world!" />, {port: 3000});
 ```
 
-In this instance, not only will your application will be rendered in the CLI like usual, but it will also be accessible via [`http://localhost:3000`](http://localhost:3000`). The content is rendered using [__XTerm__](https://github.com/xtermjs/xterm.js/), whose fully-featured renderer is capable of rendering your application faithfully.
+In this instance, not only will your application will be rendered in the CLI like usual, but it will also be accessible via [`http://localhost:3000`](http://localhost:3000`). The content is rendered using [__XTerm__](https://github.com/xtermjs/xterm.js/), whose fully-featured renderer is capable of presenting your application faithfully.
 
 ### ✌️ license
 [__MIT__](./LICENSE)
