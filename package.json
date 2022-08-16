@@ -2,12 +2,13 @@
   "name": "ink-remote",
   "version": "0.1.0",
   "description": "Serve an Ink application via Express.",
-  "main": "dist",
+  "main": "dist/src/index.js",
   "repository": "https://github.com/cawfree/ink-remote",
   "author": "cawfree <hello@cawfree.com>",
   "license": "MIT",
   "private": false,
   "scripts": {
+    "build": "tsc",
     "start": "npx ts-node scripts/start.tsx"
   },
   "devDependencies": {
