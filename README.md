@@ -1,7 +1,7 @@
 # ink-remote
 Serve an [__Ink__](https://github.com/vadimdemedes/ink) application via [__Express__](https://github.com/expressjs/express), so you can check on your application remotely when you don't feel like getting up from off your couch since you run the risk of waking your baby 👶
 
-[__Check it out!__](https://twitter.com/cawfree/status/1559674440430063616)
+[__Check it out!__ 👀](https://twitter.com/cawfree/status/1559674440430063616)
 
 ### 🚀 getting started
 
