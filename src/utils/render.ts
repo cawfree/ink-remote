@@ -29,5 +29,16 @@ export function render<
 
   serve({port});
 
-  return defaultRender<Props, K>(tree, options);
+  const defaultWrite = process.stdout.write.bind(process.stdout);
+
+  process.stdout.write = (e) => {
+    return defaultWrite(e);
+  };
+
+  return defaultRender<Props, DefaultRenderOptions>(tree, {
+    ...options,
+    stdout: process.stdout,
+    stdin: process.stdin,
+    stderr: process.stderr,
+  });
 }
