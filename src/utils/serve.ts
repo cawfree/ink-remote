@@ -14,8 +14,14 @@ export const serve = ({port}: {
       .get('/index.css', (req, res) =>
         res.sendFile(appRootPath.resolve('node_modules/ink-remote/public/index.css'))
       )
+      .get('/normalize.css', (req, res) =>
+        res.sendFile(appRootPath.resolve('node_modules/ink-remote/public/normalize.css'))
+      )
       .get('/node_modules/xterm/lib/xterm.js', (req, res) =>
         res.sendFile(appRootPath.resolve('node_modules/xterm/lib/xterm.js'))
+      )
+      .get('/node_modules/xterm-addon-fit/lib/xterm-addon-fit.js', (req, res) =>
+        res.sendFile(appRootPath.resolve('node_modules/xterm-addon-fit/lib/xterm-addon-fit.js'))
       )
       .get( '/', (e, res) => res
         .status(200)

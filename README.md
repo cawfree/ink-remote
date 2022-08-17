@@ -8,7 +8,7 @@ Serve an [__Ink__](https://github.com/vadimdemedes/ink) application via [__Expre
 Install using [__Yarn__](https://yarnpkg.com/):
 
 ```shell
-yarn add ink-remote xterm
+yarn add ink-remote xterm xterm-addon-fit
 ```
 
 Then just swap out `ink`'s included `render` function for the alternative `render` method exported by `ink-remote`:
