@@ -1,6 +1,6 @@
 {
   "name": "ink-remote",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Serve an Ink application via Express.",
   "main": "dist/src/index.js",
   "repository": "https://github.com/cawfree/ink-remote",
