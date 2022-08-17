@@ -19,6 +19,7 @@
 
   ws.onopen = console.log;
   ws.onmessage = function (e) {
+    terminal.clear();
     e.data
       .split(/\n/)
       .forEach(function (line) {
