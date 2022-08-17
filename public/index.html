@@ -2,8 +2,8 @@
 <html>
 <head>
   <base href="/">
-  <link rel="stylesheet" href="/normalize.css"/>
-  <link rel="stylesheet" href="/index.css"/>
+  <link rel="stylesheet" href="/normalize.css" />
+  <link rel="stylesheet" href="/index.css" />
   <script src="/node_modules/xterm/lib/xterm.js"></script>
   <script src="/node_modules/xterm-addon-fit/lib/xterm-addon-fit.js"></script>
 </head>
@@ -11,16 +11,19 @@
 <div id="terminal"></div>
 <script>
   var ws = new WebSocket("ws://{{address}}:{{port}}");
-  var terminal = new Terminal({
-    rendererType: 'dom',
-  });
+  var terminal = new Terminal({});
   var fitAddon = new FitAddon.FitAddon();
+
   terminal.loadAddon(fitAddon);
   terminal.open(document.getElementById('terminal'));
 
   ws.onopen = console.log;
-  ws.onmessage = function(e) {
-    e.data.split(/\n/).forEach((l) => terminal.write(l + "\r\n"));
+  ws.onmessage = function (e) {
+    e.data
+      .split(/\n/)
+      .forEach(function (line) {
+        return terminal.write(`${line}\r\n`);
+      });
     fitAddon.fit();
   };
   ws.onclose = console.log;
