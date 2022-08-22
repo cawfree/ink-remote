@@ -4,6 +4,7 @@ import {
   Instance,
   RenderOptions as DefaultRenderOptions,
 } from "ink/build/render";
+import isEqual from "react-fast-compare";
 
 import {serve} from "./serve";
 
@@ -30,10 +31,15 @@ export function render<
 
   const defaultWrite = process.stdout.write.bind(process.stdout);
 
+  let prev: string | Uint8Array = '';
+
   process.stdout.write = (e) => {
-    wss.clients.forEach(client => {
-      client.send(e);
-    })
+    // Skip unnecessary updates.
+    if (isEqual(prev, e)) return defaultWrite(e);
+
+    prev = e;
+    wss.clients.forEach(client => client.send(e));
+
     return defaultWrite(e);
   };
 
